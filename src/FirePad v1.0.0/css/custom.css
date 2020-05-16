@@ -1,0 +1,140 @@
+@font-face {
+    font-family: Product-Sans;
+    src: url(../fonts/ProductSans.ttf);
+  }
+@font-face {
+  font-family: Documenta;
+  src: url(../fonts/Documenta.otf);
+}
+@font-face {
+  font-family: Jack;
+  src: url(../fonts/Jack.TTF);
+}
+@font-face {
+  font-family: Leafy;
+  src: url(../fonts/Leafy.ttf);
+}
+@font-face {
+  font-family: Consolas;
+  src: url(../fonts/Consolas.TTF);
+}
+@font-face {
+  font-family: Montserrat-Medium;
+  src: url(../fonts/Montserrat-Medium.otf);
+}
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../fonts/Montserrat-Regular.otf);
+}
+@font-face {
+  font-family: BebasNeue-Regular;
+  src: url(../fonts/BebasNeue-Regular.ttf);
+}
+@font-face {
+  font-family: Coolvetica;
+  src: url(../fonts/Coolvetica.ttf);
+}
+pre{
+  display: inline;
+  font-size: 20px;
+  background-color: gainsboro;
+}
+hr
+{
+  height: 2px;
+  background-color: rgb(27, 26, 26);
+}
+.min
+  {
+    font-size: large;
+      color: whitesmoke;
+  }
+.min:hover{
+    color: #0F9D58;
+}
+.navbar
+{
+    
+    background-color:#282b30;
+}
+.hiddenmenu
+{
+    background-color: #222831;
+}
+.max
+{
+    font-size: large;
+    color: whitesmoke;
+}
+.max:hover
+{
+    color:#4285F4
+}
+.cl
+{
+    font-size: larger;
+    color: whitesmoke;
+}
+.cl:hover
+{
+    color: #DB4437;
+}
+  .nav-link
+  {
+      padding: 8px;
+  }
+
+  .pell {
+    width: 100%;
+  }
+  
+  .pell-content {
+    font-size: 30px;
+    line-height: 35px;
+    font-family: Consolas;
+    height: 93.4vh;
+    background-color:  white;
+    color: black;
+    outline: 0;
+    overflow-y: auto;
+    padding: 10px; 
+  }
+
+  .pell-content >p
+  {
+    margin-bottom: 0;
+  }
+  .pell-content >a
+  {
+    cursor: pointer;
+  }
+
+  .container
+  {
+    margin: 0;
+    padding: 0;
+  }
+
+  .col-sm-3
+  {
+    padding: 0;
+  }
+
+  sup
+  {
+    vertical-align: super;
+  }
+
+  sub
+  {
+    vertical-align: sub
+  }
+  .list-group-item:focus
+  {
+    background-color: #222831;
+  }
+
+  .list-group-item:hover
+  {
+    background-color: #222831;
+  }

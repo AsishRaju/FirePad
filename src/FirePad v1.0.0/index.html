@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/sidenav.css">
+  <link rel="stylesheet" href="./css/custom.css">
+  <title>FirePad</title>
+</head>
+
+<body>
+  <div class="d-flex " id="wrapper">
+    <!-- Sidebar -->
+    <div class="hiddenmenu" id="sidebar-wrapper">
+      <div class="sidebar-heading font-weight-bold text-monospace text-light" style="-webkit-app-region: drag">FirePad
+        <span> <img src="./icon/actualv2.png" style="height: 25px; width: 25px;"></span></div>
+      <div class="list-group list-group-flush sticky-top">
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="openNewInstance()">New 📝</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="openFile()">Open 📂</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="save()">Save 🗃</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="openSettings()">Settings ⚙</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="openShortcut()">Shortcuts ⌨</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-bold text-monospace text-light"
+          onclick="openAbout()">About 🚀</a>
+        <a href="#" class="list-group-item list-group-item-action hiddenmenu font-weight-normal text-monospace text-light"
+          id="version" onclick="openGithub()"></a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar  sticky-top py-0" style="-webkit-app-region: drag">
+        <button class="fas fa-arrow-left menuicon" onclick="openMenu()"
+          style="-webkit-app-region: no-drag; cursor: pointer; color: greenyellow;"></button>
+        <p class="text-center text-light font-weight-bold text-monospace" style="font-size: 23px; 
+         margin-left: 50px; margin-top: 5px; margin-bottom: 0;"><span> <img src="./icon/actualv2.png"
+              style="height: 25px; width: 25px;"></span> <span class="filename">Untitled Pad</span> </p>
+        <ul class="nav justify-content-end" style="-webkit-app-region: no-drag;">
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="padding-top: 4px;" onclick="minimizeW()"><span
+                class="fas fa-window-minimize min"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#" onclick="maximizeW()"><span class="far fa-window-maximize max"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="closeW()"><span class="fas fa-times cl"></span></a>
+          </li>
+        </ul>
+        <!-- <i class="fas fa-window-minimize" onclick="openMenu()"></i>
+        <i class="fas fa-window-maximize" onclick="openMenu()"></i>
+        <i class="fas fa-times" onclick="openMenu()"></i> -->
+      </nav>
+      <!-- Modal -->
+      <div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="linkModalLabel">Insert Link 🌐</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="url" class="col-form-label">Enter Url</label>
+                  <input type="text" class="form-control" id="url">
+                </div>
+                <div class="form-group">
+                  <label for="urltext" class="col-form-label">Enter Text:</label>
+                  <input type="text" class="form-control" id="urltext"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary font-weight-bold text-monospace mx-auto" id="addlink">Add
+                Link 🔗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="aboutModalLabel">About 🚀</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h2 class="font-weight-bold text-monospace text-center">FirePad <span> <img src="./icon/actualv2.png"
+                    style="height: 30px; width: 30px;"></span></h2>
+              <p class="font-weight-bold text-monospace text-center">Faster Editing Made Possible ✔</p>
+              <p class="font-weight-light text-monospace text-center"> FirePad believes in faster and meaning full
+                content generation,
+                the only bottel neck most of the industry leading word/text editors is being away from keyboard aka
+                (AFK) for formating text.
+                Though keyboard shortcut are available ,not all formatting options are available through them
+                .FirePad bridges this gap by providing full keyboard support to each and every formatting style that
+                FirePad offers with additional meaningful
+                text generation 😀</p>
+              <p class="font-weight-bold text-monospace text-center">Happy Typing..👨🏻‍💻</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary font-weight-bold text-monospace mx-auto"
+                onclick="openGithub()">Cotribute to this Project 🤝🏻</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="settingsModalLabel">Settings ⚙</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label class="col-form-label">Editor Theme:&nbsp; Default 'Light'</label>
+                  <select class="form-control" id="theme">
+                    <option>Light</option>
+                    <option>Dark</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Editor Font:&nbsp; Default 'Product-Sans'</label>
+                  <select class="form-control" id="font">
+                    <option>BebasNeue-Regular</option>
+                    <option selected >Consolas</option>
+                    <option>Coolvetica</option>
+                    <option>Documenta</option>
+                    <option>Jack</option>
+                    <option>Leafy</option>
+                    <option>Montserrat-Medium</option>
+                    <option>Montserrat-Regular</option>
+                    <option>Product-Sans</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Font Size:&nbsp; Default '30'</label>
+                  <input type="text" class="form-control" id="fontSize" placeholder="30"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Line Height:&nbsp; Default '35'</label>
+                  <input type="text" class="form-control" id="lineHeight" placeholder="35"></textarea>
+                </div>
+              </form>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger font-weight-bold text-monospace "
+                onclick="resetSettings()">Reset</button>
+              <button type="button" class="btn btn-primary font-weight-bold text-monospace "
+                onclick="saveSettings()">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div id="editor" class="pell mousetrap" spellcheck="false">
+      </div>
+
+    </div>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="./renderer.js"></script>
+
+</body>
+
+</html>

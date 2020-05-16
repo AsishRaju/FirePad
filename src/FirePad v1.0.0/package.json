@@ -1,0 +1,62 @@
+{
+  "name": "FirePad",
+  "version": "1.0.0",
+  "description": "Faster Editing Made Possible ✔",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "build": "electron-builder -w",
+    "release": "electron-builder -w -p 'onTagOrDraft'",
+    "win-cert": "electron-builder create-self-signed-cert -p <your-certificate-name>"
+  },
+  "repository": "https://github.com/AsishRaju/FirePad",
+  "keywords": [
+    "text",
+    "editor",
+    "WYSIWYG",
+    "pell",
+    "electron",
+    "desktop",
+    "notepad",
+    "firepad"
+  ],
+  "author": "AsishRaju",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.5.0",
+    "electron-find": "^1.0.6",
+    "electron-log": "^4.1.2",
+    "electron-store": "^5.1.1",
+    "electron-updater": "^4.3.1",
+    "jquery": "^3.5.1",
+    "mousetrap": "^1.6.5",
+    "node-key-sender": "^1.0.11",
+    "pell": "^1.0.6"
+  },
+  "build": {
+    "appId": "io.AsisRaju.FirePad",
+    "copyright": "Copyright 2020 AsishRaju.io",
+    "publish": {
+      "provider": "github"
+    },
+    "fileAssociations": [
+      {
+        "ext": "pad",
+        "name": "FirePad File",
+        "role": "Editor"
+      }
+    ]
+  },
+  "win": {
+    "target": "zip",
+    "certificateFile": "private/<yourCertificate.pfx>",
+    "certificatePassword": ""
+  }
+}
