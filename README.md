@@ -25,7 +25,6 @@
 ### Short Answer
 - [Electron] - **Core module**
 - [Pell] - **Simpalistic WYSIWYG Editor**
-- [Pell] - **Simpalistic WYSIWYG Editor**
 - [Bootstrap] - **Frontend CSS Framework**
 - [MouseTrap] - **Highlevel way of interacting with keyboard**
 
