@@ -32,7 +32,7 @@
 
 - Firepad is made possible with [Electron] which allows web technologies to run on cross platform desktop environment by adding chromium on app instances, great now on the next one.
 
-- Now we need a way to for user to enter text in our app, Simple right just app a html textbox and done NO!, using text box has its own limitation and dosent really gone on with the notion of notepad like experince, this were [Pell] drops into picture, providing more than a textbox.
+- Now we need a way for user to enter text in our app, simple right just put a html textbox and done NO!, using text box has its own limitation and dosent really go on with the notion of notepad like experince, this were [Pell] drops into picture, providing more than a textbox.
 
 - This all plugs into [Bootstrap] UI , no need to explain bootstrap right?
 
