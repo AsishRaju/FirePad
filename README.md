@@ -1,4 +1,6 @@
-# FirePad 🔥
+# FirePad 🔥 [![Github All Releases](https://img.shields.io/github/downloads/AsishRaju/FirePad/total?style=for-the-badge)]()
+
+
 <img src="https://img.shields.io/badge/Made%20with-Electron-blue?style=for-the-badge"> <a href="https://asishraju.github.io/FirePad/"><img src="https://img.shields.io/badge/View-Website-green?style=for-the-badge"> </a> <a href="https://git.io/Jf0FZ"><img src="https://img.shields.io/badge/Download Form-Github-lightgrey?style=for-the-badge"> </a> <a href="https://sourceforge.net/projects/firepad/files/latest/download"><img src="https://img.shields.io/badge/Download Form-SourceForge-orange?style=for-the-badge"> </a>
 ## Overview 👀
 ![](images/thumbnail.png)
