@@ -1,7 +1,7 @@
 # FirePad 🔥 [![Github All Releases](https://img.shields.io/github/downloads/AsishRaju/FirePad/total?style=for-the-badge)]()
 
 
-<img src="https://img.shields.io/badge/Made%20with-Electron-blue?style=for-the-badge"> <a href="https://asishraju.me/FirePad/"><img src="https://img.shields.io/badge/Visit-Website-green?style=for-the-badge"> </a> <a href="https://git.io/Jf0FZ"><img src="https://img.shields.io/badge/Download Form-Github-lightgrey?style=for-the-badge"> </a> <a href="https://sourceforge.net/projects/firepad/files/latest/download"><img src="https://img.shields.io/badge/Download Form-SourceForge-orange?style=for-the-badge"> </a>
+<img src="https://img.shields.io/badge/Made%20with-Electron-blue?style=for-the-badge"> <a href="https://asishraju.me/FirePad/"><img src="https://img.shields.io/badge/Visit-Website-green?style=for-the-badge"> </a> <a href="https://github.com/AsishRaju/FirePad/releases/download/v1.1.0/FirePad-Setup-1.1.0.exe"><img src="https://img.shields.io/badge/Download Form-Github-lightgrey?style=for-the-badge"> </a> <a href="https://sourceforge.net/projects/firepad/files/latest/download"><img src="https://img.shields.io/badge/Download Form-SourceForge-orange?style=for-the-badge"> </a>
 ## Overview 👀
 ![](images/thumbnail.png)
 ### FirePad is next generation text editing app that beleives faster text editing without being away from keyboard aka AFK.
@@ -79,7 +79,7 @@ see `src/FirePadv1.0.0/package.json` for more details
 ## Downloads
 | Windows | Mac | Linux |
 |----------------------|----------------|----------------|
-| [Download Here v1.0.0]! | Coming soon... | Coming soon... |
+| [Download Here v1.1.0]! | Coming soon... | Coming soon... |
 
 
 [Electron]:<https://www.electronjs.org/> 
@@ -87,7 +87,7 @@ see `src/FirePadv1.0.0/package.json` for more details
 [MouseTrap]:<https://craig.is/killing/mice>
 [Pell]:<https://github.com/jaredreich/pell>
 [Pell Documentation]:<https://github.com/jaredreich/pell#html>
-[Download Here v1.0.0]:<https://git.io/Jf0FZ>
+[Download Here v1.1.0]:<https://sourceforge.net/projects/firepad/files/latest/download>
 [Gmail]: <mailto:vashish888@gmail.com>
 [LinkedIn]: <https://www.linkedin.com/in/asish-raju-7a0b90192>
 [Twitter]: <https://twitter.com/vashish888>
