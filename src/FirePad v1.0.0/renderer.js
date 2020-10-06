@@ -3,11 +3,13 @@ const { remote, shell, ipcRenderer } = require('electron')
 const FindInPage = require('electron-find').FindInPage;
 const Store = require('electron-store');
 const Mousetrap = require('mousetrap');
-const ks = require('node-key-sender');
+require('mousetrap/plugins/bind-dictionary/mousetrap-bind-dictionary')
 const path = require('path')
 const fs = require('fs')
 const pell = require('pell')
-const {version} = require('./package.json')
+const { version } = require('./package.json')
+var TurndownService = require('turndown')
+var markdownpdf = require("markdown-pdf")
 
 
 
@@ -44,7 +46,7 @@ let findInPage = new FindInPage(remote.getCurrentWebContents(), {
 
 // generate/reload userSettings
 document.addEventListener("DOMContentLoaded", (e) => {
-  vers.innerText=version
+  vers.innerText = version
   const configPath = `${remote.app.getPath('userData')}\\config.json`
   if (fs.existsSync(configPath)) {
     updateEditorSetting(store.store)
@@ -92,117 +94,117 @@ function closeW() {
 
 
 // Binding KeyBoard Shorcuts
-Mousetrap.bind('ctrl+n', function () {
-  openNewInstance()
-});
-Mousetrap.bind('ctrl+s', function () {
-  save()
-})
-Mousetrap.bind('ctrl+`', function () {
-  pell.exec('strikethrough')
-});
-Mousetrap.bind('ctrl+1', function () {
-  pell.exec('formatBlock', '<h1>');
-});
-Mousetrap.bind('ctrl+2', function () {
-  pell.exec('formatBlock', '<h2>');
-});
-Mousetrap.bind('ctrl+3', function () {
-  pell.exec('formatBlock', '<h3>');
-});
-Mousetrap.bind('ctrl+4', function () {
-  pell.exec('formatBlock', '<h4>');
-});
-Mousetrap.bind('ctrl+5', function () {
-  pell.exec('formatBlock', '<h5>');
-});
-Mousetrap.bind('ctrl+6', function () {
-  pell.exec('formatBlock', '<h6>');
-});
-Mousetrap.bind('ctrl+h', function () {
-  var text = window.getSelection().toString().length
-  var textStyle = window.getSelection().anchorNode.parentNode.style
-  if (text !== 0) {
-    if (textStyle.cssText === "") {
-      pell.exec('backColor', 'yellow')
+Mousetrap.bind({
+  'mod+n': () => {
+    openNewInstance()
+  },
+  'mod+s': () => {
+    save()
+  },
+  'mod+`': () => {
+    pell.exec('strikethrough')
+  },
+  'mod+1': () => {
+    pell.exec('formatBlock', '<h1>');
+  },
+  'mod+2': () => {
+    pell.exec('formatBlock', '<h2>');
+  },
+  'mod+3': () => {
+    pell.exec('formatBlock', '<h3>');
+  },
+  'mod+4': () => {
+    pell.exec('formatBlock', '<h4>');
+  },
+  'mod+5': () => {
+    pell.exec('formatBlock', '<h5>');
+  },
+  'mod+6': () => {
+    pell.exec('formatBlock', '<h6>');
+  },
+  'mod+h': () => {
+    var text = window.getSelection().toString().length
+    var textStyle = window.getSelection().anchorNode.parentNode.style
+    if (text !== 0) {
+      if (textStyle.cssText === "") {
+        pell.exec('backColor', 'yellow')
+      }
+      else {
+        textStyle.cssText = ""
+      }
     }
-    else {
-      textStyle.cssText = ""
+  },
+  'mod+tab': () => {
+    pell.exec('indent');
+  },
+  'mod+shift+c': () => {
+    pell.exec('justifyCenter');
+  },
+  'mod+shift+x': () => {
+    pell.exec('justifyLeft');
+  },
+  'mod+shift+v': () => {
+    pell.exec('justifyRight');
+  },
+  'mod+up': () => {
+    pell.exec('superscript');
+  },
+  'mod+down': () => {
+    pell.exec('subscript');
+  },
+  'mod+f': () => {
+    findInPage.openFindWindow()
+  },
+  'shift+tab': () => {
+    pell.exec('outdent');
+  },
+  'alt+c': () => {
+    pell.exec('formatBlock', '<pre>');
+  },
+  'alt+a': () => {
+    $('#linkModal').modal('toggle')
+  },
+  'alt+1': () => {
+    pell.exec('insertOrderedList');
+  },
+
+  'alt+.': () => {
+    pell.exec('insertUnorderedList');
+  },
+  'alt+l': () => {
+    pell.exec('insertHorizontalRule');
+  },
+  'alt+t': () => {
+    pell.exec('insertHTML', '<div class="todo">[❌]&nbsp</div>')
+  },
+  'alt+y': () => {
+    const todoDiv = window.getSelection().anchorNode.parentNode
+    if (todoDiv.classList.contains('todo')) {
+      var text = todoDiv.innerText.replace('❌', '✔')
+      todoDiv.innerText = text
     }
-  }
-});
-Mousetrap.bind('ctrl+tab', function () {
-  pell.exec('indent');
-});
-Mousetrap.bind('ctrl+shift+tab', function () {
-  pell.exec('outdent');
-});
-Mousetrap.bind('ctrl+shift+c', function () {
-  pell.exec('justifyCenter');
-});
-Mousetrap.bind('ctrl+shift+x', function () {
-  pell.exec('justifyLeft');
-});
-Mousetrap.bind('ctrl+shift+v', function () {
-  pell.exec('justifyRight');
-});
-Mousetrap.bind('ctrl+up', function () {
-  pell.exec('superscript');
-});
-Mousetrap.bind('ctrl+down', function () {
-  pell.exec('subscript');
-});
-Mousetrap.bind('ctrl+f', function () {
-  findInPage.openFindWindow()
-});
-Mousetrap.bind('alt+c', function () {
-  pell.exec('formatBlock', '<pre>');
-});
-Mousetrap.bind('alt+a', function () {
-  $('#linkModal').modal('toggle')
-});
-Mousetrap.bind('alt+1', function () {
-  pell.exec('insertOrderedList');
-});
-Mousetrap.bind('alt+.', function () {
-  pell.exec('insertUnorderedList');
-});
-Mousetrap.bind('alt+l', function () {
-  pell.exec('insertHorizontalRule');
-});
-Mousetrap.bind('alt+t', function () {
-  pell.exec('insertHTML', '<div class="todo">[❌]&nbsp</div>')
-});
-Mousetrap.bind('alt+y', function () {
-  const todoDiv = window.getSelection().anchorNode.parentNode
-  if (todoDiv.classList.contains('todo')) {
-    var text = todoDiv.innerText.replace('❌', '✔')
-    todoDiv.innerText = text
-    ks.sendKey('end')
-  }
+  },
+  'alt+2': () => {
+    pell.exec('fontSize', 2)
+  },
+  'alt+3': () => {
+    pell.exec('fontSize', 4)
+  },
+  'alt+4': () => {
+    pell.exec('fontSize', 6)
+  },
+  'alt+5': () => {
+    pell.exec('fontSize', 7)
+  },
+  'alt+0': () => {
+    pell.exec('insertHTML', '<div>&nbsp;</div>')
+  },
+  'alt+d': () => {
+    const dateObj = new Date()
+    pell.exec('insertHTML', `<div>${dateObj.toDateString()}</div>`)
+  },
 
 });
-Mousetrap.bind('alt+2', function () {
-  pell.exec('fontSize', 2)
-});
-Mousetrap.bind('alt+3', function () {
-  pell.exec('fontSize', 4)
-});
-Mousetrap.bind('alt+4', function () {
-  pell.exec('fontSize', 6)
-});
-Mousetrap.bind('alt+5', function () {
-  pell.exec('fontSize', 7)
-});
-Mousetrap.bind('alt+0', function () {
-  pell.exec('insertHTML', '<div>&nbsp;</div>')
-});
-Mousetrap.bind('alt+d', function () {
-  const dateObj = new Date()
-  pell.exec('insertHTML', `<div>${dateObj.toDateString()}</div>`)
-});
-
-
 //Core Logic
 
 addlink.addEventListener('click', (e) => { //triggred from link modal 'addLink' button
@@ -257,18 +259,30 @@ pellContent.addEventListener("paste", function (e) {
 function save() {
   var savePath = remote.dialog.showSaveDialogSync({
     filters: [
-      { name: 'Pad Files', extensions: ['pad'] },
-      { name: 'Text Files', extensions: ['txt'] },
+      { name: 'Pad File', extensions: ['pad'] },
+      { name: 'Text File', extensions: ['txt'] },
+      { name: 'PDF', extensions: ['pdf'] },
+      { name: 'Markdown', extensions: ['md'] },
     ],
     defaultPath: remote.app.getPath('desktop').toString() + `\\${fileName.innerText}`
 
   });
-  fileName.innerText = path.basename(savePath)
+  fileName.innerText = path.basename(savePath).replace(path.extname(savePath), "")
   if (savePath.includes('.txt')) {
     fs.writeFileSync(savePath, editor.content.innerText, 'utf8')
   }
-  else {
+  else if (savePath.includes('.pad')) {
     fs.writeFileSync(savePath, editor.content.innerHTML, 'utf8')
+  } else {
+    var turndownService = new TurndownService()
+    var markdown = turndownService.turndown(editor.content.innerHTML)
+    if (savePath.includes('.md')) {
+      fs.writeFileSync(savePath, markdown, 'utf8')
+    } else if (savePath.includes('.pdf')) {
+      markdownpdf().from.string(markdown).to(savePath, function () {
+        console.log("Done")
+      })
+    }
   }
 }
 
@@ -299,7 +313,7 @@ function openAbout() {
   $('#aboutModal').modal('toggle')
 }
 function saveSettings() {
-  
+
   settingsObj = {
     'Theme': themeInput.value,
     'fontSize': fontSizeInput.value,
@@ -315,7 +329,7 @@ function resetSettings() {
     'Theme': 'Light',
     'fontSize': '30',
     'lineHeight': '35',
-    'font':'Consolas'
+    'font': 'Consolas'
   }
   themeInput.value = settingsObj.Theme
   updateEditorSetting(settingsObj)
@@ -331,7 +345,7 @@ function updateEditorSetting(settingsObj) {
     pellContent.style.backgroundColor = 'white';
     pellContent.style.color = 'black';
   }
-  pellContent.style.fontFamily=`${settingsObj.font}`
+  pellContent.style.fontFamily = `${settingsObj.font}`
   pellContent.style.fontSize = `${settingsObj.fontSize}px`
   pellContent.style.lineHeight = `${settingsObj.lineHeight}px`
   themeInput.value = settingsObj.Theme
@@ -340,5 +354,5 @@ function updateEditorSetting(settingsObj) {
   store.set('Theme', settingsObj.Theme)
   store.set('fontSize', settingsObj.fontSize)
   store.set('lineHeight', settingsObj.lineHeight)
-  store.set('font',settingsObj.font)
+  store.set('font', settingsObj.font)
 }
